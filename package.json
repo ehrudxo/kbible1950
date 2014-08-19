@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "express": "~4.8.5",
-    "jade": "~1.5.0"
+    "jade": "~1.5.0",
+    "logfmt": "~1.1.2"
   }
 }

@@ -1,24 +1,35 @@
-head
-  meta(name="viewport" content="width=device-width,initial-scale=1.0")
-  link(rel='stylesheet',href='/css/read.css')
-  script(src='http://code.jquery.com/jquery-1.11.1.min.js')
-  script(src='/js/jquery-scrollto.js')
-  script(src='/js/typeahead.jquery.min.js')
-  script(src='/js/initbible.js')
-body
-  .container
-    form(name='mBible')
-      input.typeahead( name='book', placeholder='예)창세기')
-      span.twitter-typeahead(style="position: relative; display: inline-block; direction: ltr;")
-        input.tt-hint-small( name='chap')
-        span 장
-        input.tt-hint-small( name='phase')
-        span 절
-    p
-    .content
-      .prevChap
-      .cbody
-      .nextChap
+html
+  head
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport" content="width=device-width,initial-scale=1")
+    link(rel='stylesheet',href='/css/read.css')
+    link(rel='stylesheet',href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css')
+    link(rel='stylesheet',href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css')
+    script(src='http://code.jquery.com/jquery-1.11.1.min.js')
+    script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js')
+    script(src='/js/jquery-scrollto.js')
+    script(src='/js/typeahead.jquery.min.js')
+    script(src='/js/initbible.js')
+  body
+    .navbar.navbar-inverse.navbar-fixed-top
+      .container
+        .navbar-header
+          a.navbar-brand(href="#") 성경읽기(개역한글)
+        form.navbar-form.navbar-right(name='mBible',role='form')
+          span.form-group
+            input.typeahead( name='book', placeholder='예)창세기')
+          span.form-group(style='margin-left:20px')
+              input.tt-hint-small( name='chap', placeholder='장')
+          span.form-group(style='margin-left:20px')
+              input.tt-hint-small( name='phase' placeholder='절')
+    .jumbotron
+      .container
+        h3 주 말씀 내 발의 등이요.
+    .container
+      .content
+        .prevChap
+        .cbody
+        .nextChap
 script.
   $( document ).ready(function( $ ) {
     bibleInit();

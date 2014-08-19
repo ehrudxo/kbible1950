@@ -1,0 +1,26 @@
+head
+  meta(name="viewport" content="width=device-width,initial-scale=1.0")
+  meta(http-equiv="Content-Type" content="text/html; charset=euc-kr")
+  script(src='http://code.jquery.com/jquery-1.11.1.min.js')
+  script(src='/js/jquery-scrollto.js')
+  script(src='/js/initbible.js')
+body
+  form(name='mBible')
+    책 :
+    input( name='book')
+    장 :
+    input( name='chap')
+    절 :
+    input( name='phase')
+    p
+    .content
+      .prevChap
+      .cbody
+      .nextChap
+script.
+  $( document ).ready(function( $ ) {
+    bibleInit();
+    $("input").on('change', function(){
+      bibleRead( mBible.book.value, mBible.chap.value,mBible.phase.value);
+    });
+  });

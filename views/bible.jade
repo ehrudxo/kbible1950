@@ -1,0 +1,11 @@
+script(src='http://code.jquery.com/jquery-1.11.1.min.js')
+script(src='/js/initbible.js')
+body
+  a(href='#' onclick='install();') 설치하기
+script.
+  var install = function(){
+    console.log('install started');
+    bibleInstall(function(db){
+      console.log(db);
+    });
+  }

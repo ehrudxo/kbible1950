@@ -1,0 +1,28 @@
+head
+  meta(name="viewport" content="width=device-width,initial-scale=1.0")
+  link(rel='stylesheet',href='/css/read.css')
+  script(src='http://code.jquery.com/jquery-1.11.1.min.js')
+  script(src='/js/jquery-scrollto.js')
+  script(src='/js/typeahead.jquery.min.js')
+  script(src='/js/initbible.js')
+body
+  .container
+    form(name='mBible')
+      input.typeahead( name='book', placeholder='예)창세기')
+      span.twitter-typeahead(style="position: relative; display: inline-block; direction: ltr;")
+        input.tt-hint-small( name='chap')
+        span 장
+        input.tt-hint-small( name='phase')
+        span 절
+    p
+    .content
+      .prevChap
+      .cbody
+      .nextChap
+script.
+  $( document ).ready(function( $ ) {
+    bibleInit();
+    $("input").on('change', function(){
+      bibleRead( mBible.book.value, mBible.chap.value,mBible.phase.value);
+    });
+  });

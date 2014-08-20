@@ -1,5 +1,5 @@
 var kbible1950;
-var readUrl ='/read';
+var readUrl ='/';
 var bibleInstall = function(callback){
   if(typeof(localStorage.getItem("k_bible_1950"))==="string" && localStorage.getItem("k_bible_1950").length>100 ){
     kbible1950 = JSON.parse(localStorage.getItem("k_bible_1950"));
@@ -10,7 +10,7 @@ var bibleInstall = function(callback){
       installRequest(function( data ){
         console.log( data );
         alert("성공적으로 설치했습니다!");
-        window.location.replace( readUrl );
+        //window.location.replace( readUrl );
       });
     } else {
       window.location.replace( readUrl );
@@ -19,7 +19,7 @@ var bibleInstall = function(callback){
     installRequest(function( data ){
       console.log( data );
       alert("성공적으로 설치했습니다!");
-      window.location.replace( readUrl );
+      //window.location.replace( readUrl );
     });
   }
 }

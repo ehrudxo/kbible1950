@@ -10,7 +10,6 @@ var bibleInstall = function(callback){
       installRequest(function( data ){
         console.log( data );
         alert("성공적으로 설치했습니다!");
-        //window.location.replace( readUrl );
       });
     } else {
       window.location.replace( readUrl );
@@ -19,7 +18,6 @@ var bibleInstall = function(callback){
     installRequest(function( data ){
       console.log( data );
       alert("성공적으로 설치했습니다!");
-      //window.location.replace( readUrl );
     });
   }
 }
@@ -30,47 +28,32 @@ var installRequest = function( callback ){
   });
 }
 
-var bibleRead = function(book,chap,phase){
+var bibleRead = function(event, ui){
   $(".cbody").html("");
-  book = abbrevs[book];
-  if(book && book.length==1){
-    book = book + " ";
+  var book  = mBible.book.value;
+  if(event && ui){
+    book = ui.item.value;
   }
-  chap = chap ||"1";
+  var chap  = mBible.chap.value||1;
+  var phase = mBible.phase.value;
+  var abbrevsBk = abbrevs[book];
   if(book){
-    for( phs in kbible1950[book][chap]){
-      $(".cbody").append("<div class='b"+phs+"'>["+book+" "+chap+":"+phs+"] "+ kbible1950[book][chap][phs]["t"] + "</div>");
+    $(".cbody").append("<table class='table table-striped' id='ctbl'>");
+    $('#ctbl').append("<tr><th>절</th><th>말씀</th></tr>")
+    for( phs in kbible1950[abbrevsBk][chap]){
+      $('#ctbl').append("<tr id='c"+phs+"'>");
+      $('#c'+phs).append("<td id='b"+phs+"'>"+phs+"</td>");
+      $('#c'+phs).append("<td>"+ kbible1950[abbrevsBk][chap][phs]["t"] + "</td>");
     }
   }
   if(phase){
-    $(".b"+phase).css("color","red");
-    $(".b"+phase).ScrollTo();
+    $("#b"+phase).css("color","red");
+    $("#b"+phase).ScrollTo({duration:'slow', offsetTop : '100'});
   }
+  mBible.book.value =  book;
+  mBible.chap.value = chap;
+  mBible.phase.value =  phase;
 }
-var substringMatcher = function(strs) {
-  return function findMatches(q, cb) {
-    var matches, substrRegex;
-
-    // an array that will be populated with substring matches
-    matches = [];
-
-    // regex used to determine if a string contains the substring `q`
-    substrRegex = new RegExp(q, 'i');
-
-    // iterate through the pool of strings and for any string that
-    // contains the substring `q`, add it to the `matches` array
-    $.each(strs, function(i, str) {
-      if (substrRegex.test(str)) {
-        // the typeahead jQuery plugin expects suggestions to a
-        // JavaScript object, refer to typeahead docs for more info
-        matches.push({ value: str });
-      }
-    });
-
-    cb(matches);
-  };
-};
-
 var  books = ['창세기', '출애굽기', '레위기', '민수기', '신명기',
   '여호수아', '사사기', '룻기', '사무엘상', '사무엘하', '열왕기상',
   '열왕기하', '역대상', '역대하', '에스라', '느헤미아', '에스더', '욥기',
@@ -101,15 +84,8 @@ var bibleInit = function(){
   if(typeof(localStorage.getItem("k_bible_1950"))==="string" && localStorage.getItem("k_bible_1950").length>100 ){
     kbible1950 = JSON.parse(localStorage.getItem("k_bible_1950"));
   }
-  $('.typeahead').typeahead({
-    hint: true,
-    highlight: true,
-    minLength: 1
-  },
-  {
-    name: 'states',
-    displayKey: 'value',
-    source: substringMatcher(books)
+  $('.autocomplete').autocomplete({
+    source : books,
+    select : bibleRead
   });
-
 }

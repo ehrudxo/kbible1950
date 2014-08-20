@@ -22,7 +22,7 @@ app.get('/getAll', function(req,res){
 	res.sendfile(__dirname + '/public/json/k_bible_1950_dos_kr.json'  );
 });
 
-var port = Number(process.env.PORT );
+var port = Number(process.env.PORT || 8001);
 var server = app.listen(port, function() {
     console.log('Listening on port %d', server.address().port);
 });

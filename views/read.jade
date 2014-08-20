@@ -1,40 +1,39 @@
 html
   head
+    title 개역한글입니다
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport" content="width=device-width,initial-scale=1")
+    link(rel='stylesheet',href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css')
+    link(rel='stylesheet',href='//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css')
     link(rel='stylesheet',href='/css/read.css')
-    link(rel='stylesheet',href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css')
-    link(rel='stylesheet',href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css')
     script(src='http://code.jquery.com/jquery-1.11.1.min.js')
     script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js')
+    script(src='//code.jquery.com/ui/1.11.1/jquery-ui.js')
     script(src='/js/jquery-scrollto.js')
-    script(src='/js/typeahead.jquery.min.js')
     script(src='/js/initbible.js')
   body
     .navbar.navbar-inverse.navbar-fixed-top
       .container
-        .navbar-header
-          a.navbar-brand(href="#") 성경읽기(개역한글)
-        form.navbar-form.navbar-right(name='mBible',role='form')
+        form(name='mBible',role='form', style="margin-top:7px;margin-bottom:7px;")
           span.form-group
-            input.typeahead( name='book', placeholder='예)창세기')
-          span.form-group(style='margin-left:20px')
-              input.tt-hint-small( name='chap', placeholder='장')
-          span.form-group(style='margin-left:20px')
-              input.tt-hint-small( name='phase' placeholder='절')
+            input.form-control.autocomplete( name='book', placeholder='예)창세기' , style='width:150px;display:inline-block;')
+          span.form-group(style='margin-left:20px;')
+              input.form-control( name='chap', placeholder='장', style='width:40px;display:inline-block;')
+          span.form-group(style='margin-left:20px;')
+              input.form-control( name='phase' placeholder='절', style='width:40px;display:inline-block;')
     .jumbotron
       .container
         h3 주 말씀 내 발의 등이요.
     .container
       .content
-        a.btn-default(href='#', onclick='bibleInstall();') Install
         .prevChap
         .cbody
+          a.btn.btn-primary(href='#', onclick='bibleInstall();') Install
         .nextChap
 script.
   $( document ).ready(function( $ ) {
     bibleInit();
     $("input").on('change', function(){
-      bibleRead( mBible.book.value, mBible.chap.value,mBible.phase.value);
+      bibleRead();
     });
   });

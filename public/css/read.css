@@ -236,6 +236,7 @@ body {
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
+  margin-top:40px;
 }
 .jumbotron .btn {
   padding: 14px 24px;
@@ -266,5 +267,13 @@ body {
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
     border-bottom: 0;
+    margit-top:50px;
   }
+}
+.ui-autocomplete {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: default;
+  z-index : 9999;
 }

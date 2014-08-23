@@ -1,10 +1,11 @@
 html
   head
-    title 개역한글입니다
+    title 개역한글입니당.
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport" content="width=device-width,initial-scale=1")
     link(rel='stylesheet',href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css')
     link(rel='stylesheet',href='//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css')
+    link(rel='stylesheet',href='//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css')
     link(rel='stylesheet',href='/css/read.css')
     script(src='http://code.jquery.com/jquery-1.11.1.min.js')
     script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js')
@@ -15,12 +16,28 @@ html
     .navbar.navbar-inverse.navbar-fixed-top
       .container
         form(name='mBible',role='form', style="margin-top:7px;margin-bottom:7px;")
-          span.form-group
-            input.form-control.autocomplete( name='book', placeholder='예)창세기' , style='width:150px;display:inline-block;')
-          span.form-group(style='margin-left:20px;')
-              input.form-control( name='chap', placeholder='장', style='width:40px;display:inline-block;')
-          span.form-group(style='margin-left:20px;')
-              input.form-control( name='phase' placeholder='절', style='width:40px;display:inline-block;')
+          ul.nav.navbar-nav
+            li.active
+              a
+                i.fa.fa-clock-o.fa-2x.ma-top-4px
+            li.active
+              a
+                i.fa.fa-ellipsis-h.fa-2x.ma-top-4px
+            li
+              a
+                input.form-control.autocomplete( name='book', placeholder='예)창세기' , style='width:150px;display:inline-block;')
+            li.active
+              a
+                i.fa.fa-chevron-left.fa-2x.ma-top-4px
+            li
+              a
+                input.form-control( name='chap', placeholder='장', style='width:40px;display:inline-block;')
+            li.active
+              a
+                i.fa.fa-chevron-right.fa-2x.ma-top-4px
+            li
+              a
+                input.form-control( name='phase' placeholder='절', style='width:40px;display:inline-block;')
     .jumbotron
       .container
         h3 주 말씀 내 발의 등이요.

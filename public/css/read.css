@@ -223,9 +223,9 @@ body {
 }
 
 /* Customize container */
-@media (min-width: 768px) {
+@media (min-width: 630px) {
   .container {
-    max-width: 730px;
+    max-width: 630px;
   }
 }
 .container-narrow > hr {
@@ -276,4 +276,15 @@ body {
   left: 0;
   cursor: default;
   z-index : 9999;
+}
+.nav>li>a {
+  position: relative;
+  display: block;
+  padding: 5px 10px;
+}
+.ma-top-3px {
+  margin-top:3px;
+}
+.ma-top-4px {
+  margin-top:4px;
 }

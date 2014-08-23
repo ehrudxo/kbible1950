@@ -288,3 +288,12 @@ body {
 .ma-top-4px {
   margin-top:4px;
 }
+@media (min-width: 640px){
+  .navbar-nav {
+    float: left;
+    margin: 0;
+  }
+  .navbar-nav>li {
+    float: left;
+  }
+}

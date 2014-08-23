@@ -18,6 +18,9 @@ html
         form(name='mBible',role='form', style="margin-top:7px;margin-bottom:7px;")
           ul.nav.navbar-nav
             li
+              a(href='#',onclick='modalHistroy();')
+                i.fa.fa-clock-o.fa-2x.ma-top-4px
+            li
               a
                 input.form-control.autocomplete( name='book', placeholder='예)창세기' , style='width:150px;display:inline-block;')
             li.active
@@ -41,9 +44,6 @@ html
             li.active
               a(href='#',onclick='phaseMove(1);')
                 i.fa.fa-chevron-right.fa-2x.ma-top-4px
-        span.navbar-toggle(style='padding:0px;margin-top:3px;')
-          a(href='#',onclick='modalHistroy();')
-            i.fa.fa-clock-o.fa-2x.ma-top-4px
     .jumbotron
       .container
         h3 주 말씀 내 발의 등이요.

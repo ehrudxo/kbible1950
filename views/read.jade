@@ -17,27 +17,33 @@ html
       .container
         form(name='mBible',role='form', style="margin-top:7px;margin-bottom:7px;")
           ul.nav.navbar-nav
-            li.active
-              a
-                i.fa.fa-clock-o.fa-2x.ma-top-4px
-            li.active
-              a
-                i.fa.fa-ellipsis-h.fa-2x.ma-top-4px
             li
               a
                 input.form-control.autocomplete( name='book', placeholder='예)창세기' , style='width:150px;display:inline-block;')
             li.active
-              a
+              a(href='#',onclick='modalBooks();')
+                i.fa.fa-ellipsis-h.fa-2x.ma-top-4px
+            li.active
+              a(href='#', onclick='chapterMove(-1)')
                 i.fa.fa-chevron-left.fa-2x.ma-top-4px
             li
-              a
+              a(style='padding-left: 0px;padding-right: 0px;')
                 input.form-control( name='chap', placeholder='장', style='width:40px;display:inline-block;')
             li.active
-              a
+              a(href='#', onclick='chapterMove(1)')
                 i.fa.fa-chevron-right.fa-2x.ma-top-4px
+            li.active
+              a(href='#',onclick='phaseMove(-1);')
+                i.fa.fa-chevron-left.fa-2x.ma-top-4px
             li
-              a
+              a(style='padding-left: 0px;padding-right: 0px;')
                 input.form-control( name='phase' placeholder='절', style='width:40px;display:inline-block;')
+            li.active
+              a(href='#',onclick='phaseMove(1);')
+                i.fa.fa-chevron-right.fa-2x.ma-top-4px
+        span.navbar-toggle(style='padding:0px;margin-top:3px;')
+          a(href='#',onclick='modalHistroy();')
+            i.fa.fa-clock-o.fa-2x.ma-top-4px
     .jumbotron
       .container
         h3 주 말씀 내 발의 등이요.
@@ -47,6 +53,18 @@ html
         .cbody
           a.btn.btn-primary(href='#', onclick='bibleInstall();') Install
         .nextChap
+    .modal.fade#mBooks
+      .modal-dialog
+        .modal-content
+          .modal-header
+            h4 성경선택
+          .modal-body
+    .modal.fade#mHistory
+      .modal-dialog
+        .modal-content
+          .modal-header
+            h4 이전검색
+          .modal-body
 script.
   $( document ).ready(function( $ ) {
     bibleInit();

@@ -1,5 +1,6 @@
 var kbible1950;
 var readUrl ='/';
+var bHistoryMem = [];
 var bibleInstall = function(callback){
   if(typeof(localStorage.getItem("k_bible_1950"))==="string" && localStorage.getItem("k_bible_1950").length>100 ){
     kbible1950 = JSON.parse(localStorage.getItem("k_bible_1950"));
@@ -53,6 +54,27 @@ var bibleRead = function(event, ui){
   mBible.book.value =  book;
   mBible.chap.value = chap;
   mBible.phase.value =  phase;
+  updateHistory({book:book,chap:chap,phase:phase});
+  localStorage.setItem("bHistory",JSON.stringify(bHistoryMem));
+}
+var updateHistory = function( bookObj ){
+  var isExist= false;
+  var hIndex=-1;
+  var bHisLen = bHistoryMem.length;
+  for(var i=0;i<bHisLen;i++){
+    if(bHistoryMem[i]['book']===bookObj['book']
+      && bHistoryMem[i]['chap']===bookObj['chap']
+      && bHistoryMem[i]['phase']===bookObj['phase']) {
+        isExist = true;
+        hIndex = i;
+        break;
+      }
+  }
+  if(isExist){
+    console.log(isExist,hIndex);
+    bHistoryMem.splice(hIndex,1);
+  }
+  bHistoryMem.push(bookObj);
 }
 var  books = ['창세기', '출애굽기', '레위기', '민수기', '신명기',
   '여호수아', '사사기', '룻기', '사무엘상', '사무엘하', '열왕기상',
@@ -88,4 +110,72 @@ var bibleInit = function(){
     source : books,
     select : bibleRead
   });
+  getHistory();
+  initModal();
+}
+var chapterMove = function( delta ){
+  mBible.chap.value=parseInt(mBible.chap.value||1) + delta;
+  bibleRead();
+}
+var phaseMove = function( delta ){
+  mBible.phase.value=parseInt(mBible.phase.value||1) + delta;
+  bibleRead();
+}
+var bookMove = function( book ){
+  $('#mBooks').modal('toggle');
+  mBible.book.value = book;
+  bibleRead();
+}
+var modalBooks = function(){
+  $('#mBooks').modal();
+}
+var goBookHistory = function( book,chap,phase ){
+  mBible.book.value = book;
+  mBible.chap.value = chap;
+  mBible.phase.value = phase;
+  bibleRead();
+  $('#mHistory').modal('toggle');
+}
+var modalHistroy = function(){
+  $('#mHistory>.modal-dialog>.modal-content>.modal-body').html('');
+  $('#mHistory>.modal-dialog>.modal-content>.modal-body').append('<div class="list-group">');
+  var target = $('#mHistory>.modal-dialog>.modal-content>.modal-body>.list-group');
+  getHistory();
+  var i = bHistoryMem.length-1;
+  var showRows = 20;
+  while( showRows-- ){
+    var his = bHistoryMem[i-showRows];
+    if(his){
+      var abbrevsBk = abbrevs[his['book']];
+      var str = '<a href="#" class="list-group-item" onclick="goBookHistory(\'';
+          str += his['book']+'\','+his['chap']+','+(his['phase']||1)+');">[';
+          str += his['book']+']'+his['chap']+'장 ';
+          if(his['phase']){
+            str += his['phase']+'절';
+          }else{
+            str += his['phase']+'전체';
+          }
+          str += ' - '+ kbible1950[abbrevsBk][his['chap']][his['phase']||1]['t']+"</a>";
+      target.append(str);
+    }
+  }
+  $('#mHistory>.modal-dialog>.modal-content>.modal-body').append();
+  $('#mHistory').modal();
+}
+var initModal = function(){
+  var buttons = '';
+  for(var i=0,len=books.length;i<len;i++){
+    buttons += '<a href="#" class="btn" onclick="bookMove(\''+books[i]+'\');">'+books[i]+'</a>'
+  }
+  $('#mBooks>.modal-dialog>.modal-content>.modal-body').append(buttons);
+}
+var getHistory = function(){
+  var bHistory = localStorage.getItem("bHistory");
+  if( bHistory ){
+    bHistoryMem = JSON.parse(bHistory);
+    console.log(bHistoryMem);
+  }else{
+    bHistoryMem =[];
+    console.log(bHistoryMem);
+  }
 }

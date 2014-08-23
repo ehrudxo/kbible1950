@@ -223,9 +223,9 @@ body {
 }
 
 /* Customize container */
-@media (min-width: 630px) {
+@media (min-width: 560px) {
   .container {
-    max-width: 630px;
+    max-width: 560px;
   }
 }
 .container-narrow > hr {
@@ -288,7 +288,7 @@ body {
 .ma-top-4px {
   margin-top:4px;
 }
-@media (min-width: 640px){
+@media (min-width: 560px){
   .navbar-nav {
     float: left;
     margin: 0;

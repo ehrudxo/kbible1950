@@ -7,17 +7,19 @@ var bibleInstall = function(callback){
   }
   if(localStorage.getItem("k_bible_1950")){
     var r = confirm("개역 한글이 설치되어 있는 거 같습니다. 그래도 설치하시겠습니까?");
+    $('#mWait').modal();
     if (r == true) {
       installRequest(function( data ){
-        console.log( data );
+        $('#mWait').modal('toggle');
         alert("성공적으로 설치했습니다!");
       });
     } else {
       window.location.replace( readUrl );
     }
   }else{
+    $('#mWait').modal();
     installRequest(function( data ){
-      console.log( data );
+      $('#mWait').modal('toggle');
       alert("성공적으로 설치했습니다!");
     });
   }
@@ -25,6 +27,7 @@ var bibleInstall = function(callback){
 var installRequest = function( callback ){
   $.get( "/getAll", function( data ) {
     localStorage.setItem( "k_bible_1950" , data );
+    kbible1950 = JSON.parse(localStorage.getItem("k_bible_1950"));
     callback(data);
   });
 }
@@ -112,6 +115,14 @@ var bibleInit = function(){
   });
   getHistory();
   initModal();
+  var recent = bHistoryMem[bHistoryMem.length-1];
+  if(recent){
+    mBible.book.value = recent['book'];
+    mBible.chap.value = recent['chap'];
+    mBible.phase.value = recent['phase'];
+    bibleRead();
+  }
+
 }
 var chapterMove = function( delta ){
   mBible.chap.value=parseInt(mBible.chap.value||1) + delta;
@@ -156,7 +167,7 @@ var modalHistroy = function(){
             str += his['phase']+'전체';
           }
           str += ' - '+ kbible1950[abbrevsBk][his['chap']][his['phase']||1]['t']+"</a>";
-      target.append(str);
+      target.prepend(str);
     }
   }
   $('#mHistory>.modal-dialog>.modal-content>.modal-body').append();

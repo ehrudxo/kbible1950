@@ -24,8 +24,8 @@ html
               a
                 input.form-control.autocomplete.book-in( name='book', placeholder='예)창세기')
             li.active
-              a(href='#',onclick='modalBooks();')
-                i.fa.fa-ellipsis-h.fa-2x.ma-top-4px
+              a(href='#',onclick='modalBooks();', style='padding-left:0px')
+                i.fa.fa-globe.fa-2x.ma-top-4px
             li.active
               a(href='#', onclick='chapterMove(-1)')
                 i.fa.fa-chevron-left.fa-2x.ma-top-4px
@@ -35,15 +35,11 @@ html
             li.active
               a(href='#', onclick='chapterMove(1)')
                 i.fa.fa-chevron-right.fa-2x.ma-top-4px
-            li.active
-              a(href='#',onclick='phaseMove(-1);')
-                i.fa.fa-chevron-left.fa-2x.ma-top-4px
             li
-              a(style='padding-left: 0px;padding-right: 0px;')
+              a(style='padding-left: 10px;padding-right: 0px;')
                 input.form-control.m-input( name='phase' placeholder='절')
-            li.active
-              a(href='#',onclick='phaseMove(1);')
-                i.fa.fa-chevron-right.fa-2x.ma-top-4px
+            li
+              a.btn.btn-primary(style='margin-top: 5px;margin-left: 10px;color:white;height:30px;') go
     .jumbotron
       .container
         h3 주 말씀 내 발의 등이요.
@@ -51,7 +47,7 @@ html
       .content
         .prevChap
         .cbody
-          a.btn.btn-primary(href='#', onclick='bibleInstall();') Install
+          a.btn.btn-primary.install-btn(href='#', onclick='bibleInstall();') 설치(4M - 시간 걸림)
         .nextChap
     .modal.fade#mBooks
       .modal-dialog
@@ -65,6 +61,11 @@ html
           .modal-header
             h4 이전검색
           .modal-body
+    .modal.fade#mWait
+      .modal-dialog
+        .modal-content
+          .modal-body
+            h4 조금만 기다리세요
 script.
   $( document ).ready(function( $ ) {
     bibleInit();

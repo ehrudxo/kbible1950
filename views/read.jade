@@ -22,7 +22,7 @@ html
                 i.fa.fa-clock-o.fa-2x.ma-top-4px
             li
               a
-                input.form-control.autocomplete( name='book', placeholder='예)창세기' , style='width:150px;display:inline-block;')
+                input.form-control.autocomplete.book-in( name='book', placeholder='예)창세기')
             li.active
               a(href='#',onclick='modalBooks();')
                 i.fa.fa-ellipsis-h.fa-2x.ma-top-4px
@@ -31,7 +31,7 @@ html
                 i.fa.fa-chevron-left.fa-2x.ma-top-4px
             li
               a(style='padding-left: 0px;padding-right: 0px;')
-                input.form-control( name='chap', placeholder='장', style='width:40px;display:inline-block;')
+                input.form-control.m-input( name='chap', placeholder='장')
             li.active
               a(href='#', onclick='chapterMove(1)')
                 i.fa.fa-chevron-right.fa-2x.ma-top-4px
@@ -40,7 +40,7 @@ html
                 i.fa.fa-chevron-left.fa-2x.ma-top-4px
             li
               a(style='padding-left: 0px;padding-right: 0px;')
-                input.form-control( name='phase' placeholder='절', style='width:40px;display:inline-block;')
+                input.form-control.m-input( name='phase' placeholder='절')
             li.active
               a(href='#',onclick='phaseMove(1);')
                 i.fa.fa-chevron-right.fa-2x.ma-top-4px

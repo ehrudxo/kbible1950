@@ -277,18 +277,25 @@ body {
   cursor: default;
   z-index : 9999;
 }
-.nav>li>a {
-  position: relative;
-  display: block;
-  padding: 5px 10px;
-}
+
 .ma-top-3px {
   margin-top:3px;
 }
 .ma-top-4px {
   margin-top:4px;
 }
-@media (min-width: 560px){
+@media (min-width: 320px){
+  .book-in {
+    width: 70px;
+    display: inline-block;
+    height :20px;
+  }
+  .m-input {
+    width: 20px;
+    display: inline-block;
+    padding:0px;
+    height :20px;
+  }
   .navbar-nav {
     float: left;
     margin: 0;
@@ -296,4 +303,49 @@ body {
   .navbar-nav>li {
     float: left;
   }
+  .fa-2x {
+    font-size: 1em;
+  }
+  .nav>li>a {
+    position: relative;
+    display: block;
+    padding: 3px 5px;
+  }
+}
+
+@media (min-width: 560px){
+  .book-in {
+    width: 150px;
+    display: inline-block;
+    height :30px;
+  }
+  .m-input {
+    width: 40px;
+    display: inline-block;
+    padding:6px 12px;
+    height :30px;
+  }
+  .navbar-nav {
+    float: left;
+    margin: 0;
+  }
+  .navbar-nav>li {
+    float: left;
+  }
+  .fa-2x {
+    font-size: 2em;
+  }
+  .nav>li>a {
+    position: relative;
+    display: block;
+    padding: 5px 10px;
+  }
+
+}
+.navbar-inverse{
+  background-color: #080808;
+}
+.navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus {
+  color: #fff;
+  background-color: #080808;
 }

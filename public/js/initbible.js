@@ -184,9 +184,9 @@ var getHistory = function(){
   var bHistory = localStorage.getItem("bHistory");
   if( bHistory ){
     bHistoryMem = JSON.parse(bHistory);
-    console.log(bHistoryMem);
+    //console.log(bHistoryMem);
   }else{
     bHistoryMem =[];
-    console.log(bHistoryMem);
+    //console.log(bHistoryMem);
   }
 }

@@ -74,7 +74,7 @@ var updateHistory = function( bookObj ){
       }
   }
   if(isExist){
-    console.log(isExist,hIndex);
+    //console.log(isExist,hIndex);
     bHistoryMem.splice(hIndex,1);
   }
   bHistoryMem.push(bookObj);

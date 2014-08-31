@@ -22,24 +22,21 @@ html
                 i.fa.fa-clock-o.fa-2x.ma-top-4px
             li
               a
-                input.form-control.autocomplete.book-in( name='book', placeholder='예)창세기')
-            li.active
-              a(href='#',onclick='modalBooks();', style='padding-left:0px')
-                i.fa.fa-globe.fa-2x.ma-top-4px
+                input.form-control.autocomplete.book-in( name='book', placeholder='예)창세기', onclick='modalBooks();')
             li.active
               a(href='#', onclick='chapterMove(-1)')
-                i.fa.fa-chevron-left.fa-2x.ma-top-4px
+                i.fa.fa-caret-left.fa-2x.ma-top-4px
             li
               a(style='padding-left: 0px;padding-right: 0px;')
                 input.form-control.m-input( name='chap', placeholder='장')
             li.active
               a(href='#', onclick='chapterMove(1)')
-                i.fa.fa-chevron-right.fa-2x.ma-top-4px
+                i.fa.fa-caret-right.fa-2x.ma-top-4px
             li
               a(style='padding-left: 10px;padding-right: 0px;')
-                input.form-control.m-input( name='phase' placeholder='절')
+                input.form-control.m-input.m-input-hidden( name='phase' placeholder='절')
             li
-              a.btn.btn-primary(style='margin-top: 5px;margin-left: 10px;color:white;height:30px;width:27px;') go
+              a.btn.btn-primary.m-button-go.m-input-hidden go
     .jumbotron
       .container
         h3 주 말씀 내 발의 등이요.
@@ -53,12 +50,18 @@ html
       .modal-dialog
         .modal-content
           .modal-header
+            button.close(type='button',data-dismiss='modal')
+              span(aria-hidden=true) &times
+              span.sr-only 닫기
             h4 성경선택
           .modal-body
     .modal.fade#mHistory
       .modal-dialog
         .modal-content
           .modal-header
+            button.close(type='button',data-dismiss='modal')
+              span(aria-hidden=true) &times
+              span.sr-only 닫기
             h4 이전검색
           .modal-body
     .modal.fade#mWait

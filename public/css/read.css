@@ -303,13 +303,13 @@ body {
   .book-in {
     width: 90px;
     display: inline-block;
-    height :30px;
+    height :35px;
   }
   .m-input {
-    width: 25px;
+    width: 30px;
     display: inline-block;
     padding:0px;
-    height :30px;
+    height :35px;
   }
   .navbar-nav {
     float: left;
@@ -321,7 +321,7 @@ body {
   .nav>li>a {
     position: relative;
     display: block;
-    padding: 3px 5px;
+    padding: 3px 7px;
   }
   .m-button-go{
     style='margin-top: 5px;
@@ -339,13 +339,13 @@ body {
   .book-in {
     width: 150px;
     display: inline-block;
-    height :30px;
+    height :35px;
   }
   .m-input {
-    width: 40px;
+    width: 75px;
     display: inline-block;
     padding:6px 12px;
-    height :30px;
+    height :35px;
   }
   .m-input-hidden{
     display:inline;

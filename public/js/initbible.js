@@ -41,7 +41,7 @@ var bibleRead = function(event, ui){
   var chap  = mBible.chap.value||1;
   var phase = mBible.phase.value;
   var abbrevsBk = abbrevs[book];
-  if(book){
+  if(book && kbible1950[abbrevsBk][chap]){
     $(".cbody").append("<table class='table table-striped' id='ctbl'>");
     $('#ctbl').append("<tr><th>절</th><th>말씀</th></tr>")
     for( phs in kbible1950[abbrevsBk][chap]){
@@ -49,16 +49,28 @@ var bibleRead = function(event, ui){
       $('#c'+phs).append("<td id='b"+phs+"'>"+phs+"</td>");
       $('#c'+phs).append("<td>"+ kbible1950[abbrevsBk][chap][phs]["t"] + "</td>");
     }
+    if(phase){
+      $("#b"+phase).css("color","red");
+      $("#b"+phase).ScrollTo({duration:'slow', offsetTop : '100'});
+    }
+    mBible.book.value =  book;
+    mBible.chap.value = chap;
+    mBible.phase.value =  phase;
+    updateHistory({book:book,chap:chap,phase:phase});
+    localStorage.setItem("bHistory",JSON.stringify(bHistoryMem));
+  }else{
+    if( chap > 0 ){
+      $('#mInfo').modal();
+    }else{
+
+    }
+    var prevNow =bHistoryMem[bHistoryMem.length -1];
+    mBible.book.value =  prevNow["book"];
+    mBible.chap.value = prevNow["chap"];
+    mBible.phase.value =  prevNow["phase"];
+    bibleRead();
   }
-  if(phase){
-    $("#b"+phase).css("color","red");
-    $("#b"+phase).ScrollTo({duration:'slow', offsetTop : '100'});
-  }
-  mBible.book.value =  book;
-  mBible.chap.value = chap;
-  mBible.phase.value =  phase;
-  updateHistory({book:book,chap:chap,phase:phase});
-  localStorage.setItem("bHistory",JSON.stringify(bHistoryMem));
+
 }
 var updateHistory = function( bookObj ){
   var isExist= false;
@@ -125,7 +137,8 @@ var bibleInit = function(){
 
 }
 var chapterMove = function( delta ){
-  mBible.chap.value=parseInt(mBible.chap.value||1) + delta;
+  mBible.phase.value = 1;
+  mBible.chap.value = parseInt(mBible.chap.value||1) + delta;
   bibleRead();
 }
 var phaseMove = function( delta ){
@@ -149,13 +162,10 @@ var goBookHistory = function( book,chap,phase ){
 }
 var modalHistroy = function(){
   $('#mHistory>.modal-dialog>.modal-content>.modal-body').html('');
-  console.log($('#mHistory>.modal-dialog>.modal-content>.modal-body'));
   $('#mHistory>.modal-dialog>.modal-content>.modal-body').append('<div class="list-group">');
   var target = $('#mHistory>.modal-dialog>.modal-content>.modal-body>.list-group');
-  console.log("target",target);
   getHistory();
   var i = bHistoryMem.length-1;
-  console.log(i);
   var showRows = 20;
   while( showRows-- ){
     var his = bHistoryMem[i-showRows];
@@ -169,9 +179,10 @@ var modalHistroy = function(){
           }else{
             str += his['phase']+'전체';
           }
-          str += ' - '+ kbible1950[abbrevsBk][his['chap']][his['phase']||1]['t']+"</a>";
-      console.log(str);    
-      target.prepend(str);
+          if(kbible1950[abbrevsBk][his['chap']] && kbible1950[abbrevsBk][his['chap']][his['phase']||1]){
+            str += ' - '+ kbible1950[abbrevsBk][his['chap']][his['phase']||1]['t']+"</a>";
+            target.prepend(str);
+          }
     }
   }
   $('#mHistory>.modal-dialog>.modal-content>.modal-body').append();
@@ -188,9 +199,7 @@ var getHistory = function(){
   var bHistory = localStorage.getItem("bHistory");
   if( bHistory ){
     bHistoryMem = JSON.parse(bHistory);
-    //console.log(bHistoryMem);
   }else{
     bHistoryMem =[];
-    //console.log(bHistoryMem);
   }
 }

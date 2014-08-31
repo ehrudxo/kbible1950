@@ -12,32 +12,33 @@ html
     script(src='//code.jquery.com/ui/1.11.1/jquery-ui.js')
     script(src='/js/jquery-scrollto.js')
     script(src='/js/initbible.js')
-    script(src='https://getfirebug.com/firebug-lite.js').
-      {
-        overrideConsole : false,
-        startOpened :true,
-        enableTrace :true
-      }
+    //
+      script(src='https://getfirebug.com/firebug-lite.js').
+        {
+          overrideConsole : false,
+          startOpened :true,
+          enableTrace :true
+        }
   body
     .navbar.navbar-inverse.navbar-fixed-top
       .container
         form(name='mBible',role='form', style="margin-top:7px;margin-bottom:7px;")
           ul.nav.navbar-nav
-            li
-              a(href='#',onclick='modalHistroy();')
-                i.fa.fa-clock-o.fa-2x.ma-top-4px
+            li.active
+              a(onclick='modalHistroy();')
+                i.fa.fa-history.fa-2x.ma-top-4px
             li
               a
-                input.form-control.autocomplete.book-in( name='book', placeholder='예)창세기', onclick='modalBooks();')
+                input.form-control.autocomplete.book-in( name='book', placeholder='예)창세기', onclick='modalBooks();',readonly)
             li.active
-              a(href='#', onclick='chapterMove(-1)')
-                i.fa.fa-caret-left.fa-2x.ma-top-4px
+              a(onclick='chapterMove(-1)')
+                i.fa.fa-minus.fa-2x.ma-top-4px
             li
               a(style='padding-left: 0px;padding-right: 0px;')
                 input.form-control.m-input( name='chap', placeholder='장')
             li.active
-              a(href='#', onclick='chapterMove(1)')
-                i.fa.fa-caret-right.fa-2x.ma-top-4px
+              a(onclick='chapterMove(1)')
+                i.fa.fa-plus.fa-2x.ma-top-4px
             li
               a(style='padding-left: 10px;padding-right: 0px;')
                 input.form-control.m-input.m-input-hidden( name='phase' placeholder='절')
@@ -73,6 +74,15 @@ html
         .modal-content
           .modal-body
             h4 조금만 기다리세요
+    .modal.fade#mInfo
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button',data-dismiss='modal')
+              span(aria-hidden=true) &times
+              span.sr-only 닫기
+          .modal-body
+            h4 마지막 장입니다.
 script.
   $( document ).ready(function( $ ) {
     bibleInit();

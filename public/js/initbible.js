@@ -149,10 +149,13 @@ var goBookHistory = function( book,chap,phase ){
 }
 var modalHistroy = function(){
   $('#mHistory>.modal-dialog>.modal-content>.modal-body').html('');
+  console.log($('#mHistory>.modal-dialog>.modal-content>.modal-body'));
   $('#mHistory>.modal-dialog>.modal-content>.modal-body').append('<div class="list-group">');
   var target = $('#mHistory>.modal-dialog>.modal-content>.modal-body>.list-group');
+  console.log("target",target);
   getHistory();
   var i = bHistoryMem.length-1;
+  console.log(i);
   var showRows = 20;
   while( showRows-- ){
     var his = bHistoryMem[i-showRows];
@@ -167,6 +170,7 @@ var modalHistroy = function(){
             str += his['phase']+'전체';
           }
           str += ' - '+ kbible1950[abbrevsBk][his['chap']][his['phase']||1]['t']+"</a>";
+      console.log(str);    
       target.prepend(str);
     }
   }

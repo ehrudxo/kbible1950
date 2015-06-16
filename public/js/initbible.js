@@ -147,6 +147,7 @@ var phaseMove = function( delta ){
 }
 var bookMove = function( book ){
   $('#mBooks').modal('toggle');
+  mBible.chap.value = 1;
   mBible.book.value = book;
   bibleRead();
 }

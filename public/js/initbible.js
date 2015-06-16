@@ -157,7 +157,7 @@ var bookMove = function( book ){
   $('#mBooks').modal('toggle');
   mBible.chap.value = 1;
   mBible.book.value = book;
-  modalChapters();
+  modalChapters(); 
 }
 var modalBooks = function(){
   $('#mBooks').modal();

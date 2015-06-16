@@ -32,13 +32,13 @@ html
                 a
                   input.form-control.autocomplete.book-in( name='book', placeholder='예)창세기', onclick='modalBooks();',readonly)
               li.active
-                a(onclick='chapterMove(-1)')
+                a(onclick='chapterMoveByDelta(-1)')
                   i.fa.fa-minus.fa-2x.ma-top-4px
               li
                 a(style='padding-left: 0px;padding-right: 0px;')
                   input.form-control.m-input( name='chap', placeholder='장', onclick='modalChapters();',readonly)
               li.active
-                a(onclick='chapterMove(1)')
+                a(onclick='chapterMoveByDelta(1)')
                   i.fa.fa-plus.fa-2x.ma-top-4px
               li
                 a(style='padding-left: 10px;padding-right: 0px;')
@@ -62,6 +62,15 @@ html
               span(aria-hidden=true) &times
               span.sr-only 닫기
             h4 성경선택
+          .modal-body
+    .modal.fade#mChaps
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button',data-dismiss='modal')
+              span(aria-hidden=true) &times
+              span.sr-only 닫기
+            h4 장 선택
           .modal-body
     .modal.fade#mHistory
       .modal-dialog

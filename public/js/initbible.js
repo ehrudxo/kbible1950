@@ -136,7 +136,15 @@ var bibleInit = function(){
   }
 
 }
-var chapterMove = function( delta ){
+var chapterMove = function( chapter ){
+  console.log(mBible.chap.value);
+  $('#mChaps').modal('toggle');
+  mBible.phase.value = 1;
+  mBible.chap.value = parseInt(chapter);
+
+  bibleRead();
+}
+var chapterMoveByDelta = function( delta ){
   mBible.phase.value = 1;
   mBible.chap.value = parseInt(mBible.chap.value||1) + delta;
   bibleRead();
@@ -149,13 +157,25 @@ var bookMove = function( book ){
   $('#mBooks').modal('toggle');
   mBible.chap.value = 1;
   mBible.book.value = book;
-  bibleRead();
+  modalChapters();
 }
 var modalBooks = function(){
   $('#mBooks').modal();
 }
-var modalChapters = function(book){
-
+var modalChapters = function(bookName){
+  $('#mChaps>.modal-dialog>.modal-content>.modal-body').empty();
+  bookName = bookName || mBible.book.value;
+  count( bookName, chapModalFill );
+  $('#mChaps').modal();
+}
+var count = function(bookName, cb ){
+  var objs = kbible1950[abbrevs[bookName]];
+  var i = 0;
+  while(true){
+    i++;
+    if(objs[i])cb(i);
+    else break;
+  }
 }
 var goBookHistory = function( book,chap,phase ){
   mBible.book.value = book;
@@ -198,6 +218,10 @@ var initModal = function(){
     buttons += '<a href="#" class="btn" onclick="bookMove(\''+books[i]+'\');">'+books[i]+'</a>'
   }
   $('#mBooks>.modal-dialog>.modal-content>.modal-body').append(buttons);
+}
+var chapModalFill = function(chap){
+  var buttons = '<a href="#" class="btn" onclick="chapterMove('+chap+');">'+chap+'</a>';
+  $('#mChaps>.modal-dialog>.modal-content>.modal-body').append(buttons);
 }
 var getHistory = function(){
   var bHistory = localStorage.getItem("bHistory");

@@ -20,37 +20,40 @@ html
           enableTrace :true
         }
   body
-    .navbar.navbar-inverse.navbar-fixed-top
+    .wrapper
+      .navbar.navbar-inverse.navbar-fixed-top
+        .container
+          form(name='mBible',role='form', style="margin-top:7px;margin-bottom:7px;")
+            ul.nav.navbar-nav
+              li.active
+                a(onclick='modalHistroy();')
+                  i.fa.fa-history.fa-2x.ma-top-4px
+              li
+                a
+                  input.form-control.autocomplete.book-in( name='book', placeholder='예)창세기', onclick='modalBooks();',readonly)
+              li.active
+                a(onclick='chapterMove(-1)')
+                  i.fa.fa-minus.fa-2x.ma-top-4px
+              li
+                a(style='padding-left: 0px;padding-right: 0px;')
+                  input.form-control.m-input( name='chap', placeholder='장', onclick='modalChapters();',readonly)
+              li.active
+                a(onclick='chapterMove(1)')
+                  i.fa.fa-plus.fa-2x.ma-top-4px
+              li
+                a(style='padding-left: 10px;padding-right: 0px;')
+                  input.form-control.m-input.m-input-hidden( name='phase' placeholder='절')
+      .jumbotron
+        .container
+          h3 주 말씀 내 발의 등이요.
       .container
-        form(name='mBible',role='form', style="margin-top:7px;margin-bottom:7px;")
-          ul.nav.navbar-nav
-            li.active
-              a(onclick='modalHistroy();')
-                i.fa.fa-history.fa-2x.ma-top-4px
-            li
-              a
-                input.form-control.autocomplete.book-in( name='book', placeholder='예)창세기', onclick='modalBooks();',readonly)
-            li.active
-              a(onclick='chapterMove(-1)')
-                i.fa.fa-minus.fa-2x.ma-top-4px
-            li
-              a(style='padding-left: 0px;padding-right: 0px;')
-                input.form-control.m-input( name='chap', placeholder='장')
-            li.active
-              a(onclick='chapterMove(1)')
-                i.fa.fa-plus.fa-2x.ma-top-4px
-            li
-              a(style='padding-left: 10px;padding-right: 0px;')
-                input.form-control.m-input.m-input-hidden( name='phase' placeholder='절')
-    .jumbotron
-      .container
-        h3 주 말씀 내 발의 등이요.
-    .container
-      .content
-        .prevChap
-        .cbody
-          a.btn.btn-primary.install-btn(href='#', onclick='bibleInstall();') 설치(4M - 시간 걸림)
-        .nextChap
+        .content
+          .prevChap
+          .cbody
+            a.btn.btn-primary.install-btn(href='#', onclick='bibleInstall();') 설치(4M - 시간 걸림)
+          .nextChap
+    .footer
+      p asdf
     .modal.fade#mBooks
       .modal-dialog
         .modal-content

@@ -1,18 +1,14 @@
 /* custom font! */
 /* ------------ */
-
+* {
+  margin :0;
+}
 @font-face {
   font-family: Prociono;
   src: url(../font/Prociono-Regular-webfont.ttf);
 }
 
-/* scaffolding */
-/* ----------- */
 
-html {
-  overflow-y: scroll;
-  *overflow-x: hidden;
-}
 
 .tt-dropdown-menu,
 .gist {
@@ -23,10 +19,16 @@ html {
 /* ----------- */
 
 html {
+  /* scaffolding */
+  /* ----------- */
+  overflow-y: scroll;
+  *overflow-x: hidden;
+  /**/
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18px;
   line-height: 1.2;
   color: #333;
+  height:100%;
 }
 
 a {
@@ -194,14 +196,24 @@ p + p {
 body {
   padding-top: 20px;
   padding-bottom: 20px;
+  height: 100%;
 }
-
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -155px; /* the bottom margin is the negative value of the footer's height */
+}
+.footer, .push {
+    height: 155px; /* .push must be the same height as .footer */
+}
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
 .footer {
   padding-right: 15px;
   padding-left: 15px;
+  text-align : center;
 }
 
 /* Custom page header */

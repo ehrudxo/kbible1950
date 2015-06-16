@@ -153,6 +153,9 @@ var bookMove = function( book ){
 var modalBooks = function(){
   $('#mBooks').modal();
 }
+var modalChapters = function(book){
+
+}
 var goBookHistory = function( book,chap,phase ){
   mBible.book.value = book;
   mBible.chap.value = chap;

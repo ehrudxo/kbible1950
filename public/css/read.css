@@ -8,8 +8,6 @@
   src: url(../font/Prociono-Regular-webfont.ttf);
 }
 
-
-
 .tt-dropdown-menu,
 .gist {
   text-align: left;
@@ -27,7 +25,7 @@ html {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18px;
   line-height: 1.2;
-  color: #333;
+  color: #3b5998;
   height:100%;
 }
 
@@ -298,11 +296,16 @@ body {
 }
 
 .navbar-inverse{
-  background-color: #080808;
+  background-color: #3b5998;
+  border-color: #3b5998;
 }
 .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus {
+  color: #3b5998;
+  background-color: #3b5998;
+}
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus {
   color: #fff;
-  background-color: #080808;
+  background-color: #3b5998;
 }
 .install-btn{
   width: 100%;

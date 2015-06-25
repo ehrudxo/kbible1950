@@ -27,17 +27,21 @@ html
             ul.nav.navbar-nav
               li.active
                 a(onclick='modalHistroy();')
-                  i.fa.fa-bookmark.fa-2x.ma-top-4px
-              li
+                  i.fa.fa-bookmark.fa-2x.ma-top-4px.fb-back-deep
+              li.zIndexOn
                 a
                   input.form-control.autocomplete.book-in( name='book', placeholder='예)창세기', onclick='modalBooks();',readonly)
-              li
+              li.active.search-icon
+                a(onclick='modalBooks();')
+                  i.fa.fa-search.fa-2x.ma-top-4px.fb-back-deep
+              li &nbsp;
+              li.zIndexOn
                 a(style='padding-left: 0px;padding-right: 0px;')
-                  input.form-control.m-input( name='chap', placeholder='장', onclick='modalBooks();();',readonly)
-              li.active
-                a(onclick='modalBooks();(1)')
-                  i.fa.fa-search.fa-2x.ma-top-4px
-              li
+                  input.form-control.m-input( name='chap', placeholder='장', onclick='modalChapters();',readonly)
+              li.active.caret-icon
+                a(onclick='modalChapters();')
+                  i.fa.fa-caret-down.fa-2x.ma-top-4px.fb-back-deep
+              li.invisible
                 a(style='padding-left: 10px;padding-right: 0px;')
                   input.form-control.m-input.m-input-hidden( name='phase' placeholder='절')
       .jumbotron

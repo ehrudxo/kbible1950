@@ -386,3 +386,29 @@ body {
   }
 
 }
+.moveBar{
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  z-index: 999;
+  top: 500px;
+}
+.moveBar .mvLeft{
+  display: inline;
+  float: left;
+  width: 100px;
+  height: 100px;
+  background-color:#3b5998;
+  color: white;
+  border-radius: 50%;
+
+}
+.moveBar .mvRight{
+  display: inline;
+  float: right;
+  width: 100px;
+  height: 100px;
+  background-color:#3b5998;
+  color: white;
+  border-radius: 50%;
+}

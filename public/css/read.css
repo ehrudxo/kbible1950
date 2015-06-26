@@ -424,16 +424,19 @@ body {
 }
 .search-icon{
   margin-left: -12px;
-  margin-top: 1px;
+  margin-top: -2px;
   padding-right: 5px;
 }
 .caret-icon{
   margin-left: -5px;
-  margin-top: 1px;
+  margin-top: 0px;
   padding-right: 5px;
 }
 .fb-back-deep{
   color : #253965;
+}
+.fb-back-deep-bg{
+  background-color: #253965;
 }
 .invisible{
   visibility: hidden;

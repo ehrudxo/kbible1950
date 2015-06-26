@@ -27,14 +27,14 @@ html
             ul.nav.navbar-nav
               li.active
                 a(onclick='modalHistroy();')
-                  i.fa.fa-bookmark.fa-2x.ma-top-4px
+                  i.fa.fa-bookmark-o.fa-2x.ma-top-4px
               li
                 a
-                  input.form-control.autocomplete.book-in( name='book', placeholder='예)창세기', onclick='modalBooks();',readonly,style='background-color: #253965;color:white')
+                  input.form-control.autocomplete.book-in( name='book', placeholder='예)창세기', onclick='modalBooks();',readonly,style='background-color: #253965;color:white;border:0px;text-align:center;')
               li
                 a(style='padding-left: 0px;padding-right: 0px;')
-                  input.form-control.m-input( name='chap', placeholder='장', onclick='modalChapters();',readonly,style='background-color: #253965;color:white')
-              li
+                  input.form-control.m-input( name='chap', placeholder='장', onclick='modalChapters();',readonly,style='background-color: #253965;color:white;border:0px;text-align:center;')
+                  input.form-control.m-input( value='절', readonly,style='background-color: #3b5998;color:white;border:0px;text-align:center;')
               li.invisible
                 a(style='padding-left: 10px;padding-right: 0px;')
                   input.form-control.m-input.m-input-hidden( name='phase' placeholder='절')

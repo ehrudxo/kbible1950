@@ -444,3 +444,8 @@ body {
 .zIndexOn{
   z-index: 10;
 }
+.head-txt{
+  color: white;
+  margin-left: 5px;
+  font-size: 17px;
+}
